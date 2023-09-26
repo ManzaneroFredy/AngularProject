@@ -1,0 +1,21 @@
+
+<input name="query" placeholder="?" [(ngModel)]="txtBusqueda"/>
+<button (click)="busquedaGit()">Submit</button>
+<button routerLink="">Regresar al inicio</button>
+
+<div *ngIf="result; else elseBlock" class="elementsContainer">
+    <div class="resultElements" *ngFor="let elemento of result!.items">
+        <a href="{{elemento.html_url}}">
+            <div class="card indElement">
+                <img class="card-img-top imgElement" [src]="elemento.owner.avatar_url">
+                <div class="card-body">
+                    <h5 card-title>{{elemento.name}}
+                        <small> by {{elemento.owner.login}}</small>
+                    </h5>
+                    <p class="card-text">{{elemento.description}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<ng-template #elseBlock>Loading</ng-template>
